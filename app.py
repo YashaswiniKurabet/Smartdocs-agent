@@ -8,9 +8,9 @@ from langchain_community.vectorstores import FAISS
 from langchain_community.document_loaders import PyPDFLoader, TextLoader, Docx2txtLoader
 from langchain_groq import ChatGroq
 
-# Load API key
+# Load API key (local .env OR Streamlit Cloud secrets)
 load_dotenv()
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", st.secrets.get("GROQ_API_KEY", ""))
 
 # ---------- Streamlit Page Config ----------
 st.set_page_config(
@@ -31,7 +31,7 @@ temperature = st.sidebar.slider("Answer creativity (temperature)", 0.0, 1.0, 0.2
 top_k = st.sidebar.slider("Search depth (chunks)", 2, 10, 4)
 
 if not GROQ_API_KEY:
-    st.error("⚠️ No GROQ_API_KEY found in .env file")
+    st.error("⚠️ No GROQ_API_KEY found. Please set it in .env (local) or Streamlit Secrets (cloud).")
     st.stop()
 
 # Initialize Model & Embeddings
