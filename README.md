@@ -104,5 +104,35 @@ Prerequisites
 1. **Clone the repo**
 
 ```bash
-git clone https://github.com/<your-username>/smartdocs-agent.git
-cd smartdocs-agent
+git clone https://github.com/YashaswiniKurabet/Smartdocs-agent.git
+cd Smartdocs-agent
+```
+
+2. **Create and activate a virtual environment**
+
+```bash
+python -m venv venv
+# On Windows:
+venv\Scripts\activate
+# On Linux/macOS:
+source venv/bin/activate
+```
+
+3. **Install dependencies**
+
+```bash
+pip install -r requirements.txt
+```
+
+4. **Run the Streamlit application**
+
+```bash
+streamlit run app.py
+```
+
+---
+
+## 6. License
+
+This project is licensed under the [MIT License](LICENSE).
+
